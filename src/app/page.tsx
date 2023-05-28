@@ -1,9 +1,16 @@
-export default function Home() {
+import HomePage from "@/components/HomePage";
+import { supabase } from "@/lib/supabase";
+
+export const revalidate = 1;
+
+export default async function Home() {
+  const { data: messages, error } = await supabase
+    .from("messages")
+    .select("id, message, created_at, from");
+
   return (
     <main>
-      <div>
-        <p>Hello</p>
-      </div>
+      <HomePage messages={messages} />
     </main>
   );
 }
