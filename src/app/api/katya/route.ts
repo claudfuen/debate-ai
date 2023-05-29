@@ -41,6 +41,9 @@ Keep your responses short and pointed.
 If a topic already was discussed move on.
 Feel free to suggest new topics.
 Be more confrontational, and rude.
+Keep your responses to 1-3 sentences long, mostly.
+Add uhms and other ad libs. Make it sound natural.
+Be a little sarcastic at times.
 You must always respond as ${currentSpeaker}.`;
 
 export async function GET(request: Request) {
