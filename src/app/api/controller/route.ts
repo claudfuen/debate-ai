@@ -62,10 +62,9 @@ export async function GET() {
     fetch(url, { method: "GET" });
   }
 
-  console.log({ nextSpeaker, history: priorMessagesConcat, url });
+  console.log({ nextSpeaker, url });
 
   return NextResponse.json({
     nextSpeaker,
-    history: priorMessagesConcat,
   });
 }
