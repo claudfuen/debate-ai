@@ -8,7 +8,7 @@ if (!process.env.OPENAI_API_KEY) {
   throw new Error("Missing env var: OPENAI_API_KEY");
 }
 
-const chat = new ChatOpenAI({ temperature: 0.4, modelName: "gpt-3.5" });
+const chat = new ChatOpenAI({ temperature: 0.4, modelName: "gpt-3.5-turbo" });
 
 // Cannot use edge since it doesn't support XMLHttpRequest
 export const runtime = "nodejs";
@@ -56,7 +56,8 @@ export async function GET(request: Request) {
   let { data: fetchMessages, error: fetchError } = await supabase
     .from("messages")
     .select("id, created_at, from, message")
-    .order("id", { ascending: true });
+    .order("id", { ascending: true })
+    .limit(10);
 
   const priorMessagesConcat = fetchMessages?.map((message) => {
     return `${message.from}: ${message.message} \n\n`;
