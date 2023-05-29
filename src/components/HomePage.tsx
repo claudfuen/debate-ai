@@ -24,9 +24,19 @@ export default function HomePage({ messages }: { messages: Message[] | null }) {
         <Flex key={message.id}>
           <Flex w={24} dir="column">
             <Stack>
-              <Heading size={"xs"} fontSize={"xs"}>
-                {message.from}
-              </Heading>
+              <Box>
+                <Tag
+                  colorScheme={
+                    message.from === "CLAUDIO"
+                      ? "red"
+                      : message.from === "KATYA"
+                      ? "blue"
+                      : "gray"
+                  }
+                >
+                  {message.from}
+                </Tag>
+              </Box>
               <Text fontSize={"xs"}>
                 {new Date(message.created_at).toLocaleTimeString()}
               </Text>
