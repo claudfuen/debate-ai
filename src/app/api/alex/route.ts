@@ -53,6 +53,8 @@ export async function GET(request: Request) {
   Here's the transcript of the most recent messages: [{history}]
   
   You must respond as {currentSpeaker}.  
+
+  You must NOT include your own name in the response, just respond with the message.
   
   What do you say next?`;
   const promptA = new PromptTemplate({
