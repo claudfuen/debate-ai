@@ -1,7 +1,7 @@
 {
   "crons": [
     {
-      "path": "/api/trigger-message",
+      "path": "/api/controller",
       "schedule": "* * * * *"
     }
   ]
