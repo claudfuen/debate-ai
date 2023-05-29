@@ -85,6 +85,8 @@ export async function GET(request: Request) {
     new HumanChatMessage(formattedPrompt),
   ]);
 
+  console.log({ response });
+
   const { data, error } = await supabase.from("messages").insert([
     {
       message: response.text,
