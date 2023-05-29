@@ -56,11 +56,13 @@ export async function GET() {
     CLAUDIO: "/api/claudio",
   };
 
+  const url = `https://debate.tube${pathMap[nextSpeaker]}`;
+
   if (pathMap[nextSpeaker]) {
-    fetch(`https://debate.tube${pathMap[nextSpeaker]}`, { method: "GET" });
+    fetch(url, { method: "GET" });
   }
 
-  console.log({ nextSpeaker, history: priorMessagesConcat });
+  console.log({ nextSpeaker, history: priorMessagesConcat, url });
 
   return NextResponse.json({
     nextSpeaker,
