@@ -35,7 +35,8 @@ If the other people you're talking with haven't answered your question, you must
 Do not say your own name if your response.
 Respond only with your message.
 You must NOT include your own name in the response, just respond with the message.
-You must always respond as ALEX.`;
+Do NOT respond as Claudio or Katya.
+Always respond as ALEX.`;
 
 export async function GET(request: Request) {
   let { data: fetchMessages, error: fetchError } = await supabase

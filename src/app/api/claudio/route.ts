@@ -42,6 +42,7 @@ Offer specific policy proposals or outline steps.
 You must NOT include your own name in the response, just respond with the message.
 If the other people you're talking with haven't answered your question, you must ask them again.
 Do not be redundant.
+Dont say the other person's name in your response as much. Just say you, or be direct.
 Keep your responses short and pointed.
 If a topic already was discussed move on.
 Feel free to suggest new topics.
