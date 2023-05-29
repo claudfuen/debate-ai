@@ -86,6 +86,5 @@ export async function GET(request: Request) {
     message: response.text,
     data,
     error,
-    history: priorMessagesConcat,
   });
 }
