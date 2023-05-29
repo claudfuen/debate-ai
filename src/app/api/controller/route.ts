@@ -18,8 +18,9 @@ async function getNextSpeaker(messages: string[]) {
     
   Sometimes allow the same person to speak twice in a row.
   Optimize for controversial and engaging conversations, dramatic, and heated.
+  Do not say anything else, just the name. One word responses.
 
-  Only respond with "ALEX", "KATYA", or "CLAUDIO".`;
+  Only respond with a single word: "ALEX", "KATYA", or "CLAUDIO".`;
   const response = await chat.call([
     new SystemChatMessage(systemInstructions),
     new HumanChatMessage("Who should speak next?"),
