@@ -55,7 +55,10 @@ export async function GET(request: Request) {
   
   You must respond as {currentSpeaker}.  
 
-  You must NOT include your own name in the response, just respond with the message.
+  You must NOT include your own name in the response, just respond with the text message.
+  Do NOT respond as Claudio or Katya.
+  Always respond as ALEX.
+  Do not include your name in your response.
   
   What do you say next?`;
   const promptA = new PromptTemplate({
