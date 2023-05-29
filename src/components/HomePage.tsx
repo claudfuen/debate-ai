@@ -1,19 +1,13 @@
 "use client";
 
 import { Center, Spinner, Stack, VStack } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { Message } from "./Message";
-
-export type Message = {
-  id: number;
-  message: string;
-  created_at: string;
-  from: "ALEX" | "KATYA" | "CLAUDIO";
-};
+import { useEffect, useRef, useState } from "react";
+import Message, { MessageProps } from "./Message";
 
 export default function HomePage() {
-  const [messages, setMessages] = useState<Message[] | null>(null);
+  const [messages, setMessages] = useState<MessageProps[] | null>(null);
   const [loading, setLoading] = useState(true);
+  const lastMessageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const getMessages = async () => {
@@ -30,6 +24,12 @@ export default function HomePage() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    if (lastMessageRef.current) {
+      lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
+
   if (!messages && loading)
     return (
       <VStack p={8} gap={4} py={16}>
@@ -39,8 +39,12 @@ export default function HomePage() {
 
   return (
     <Stack p={8} gap={4}>
-      {messages?.map((message) => (
-        <Message key={message.id} {...message} />
+      {messages?.map((message, index) => (
+        <Message
+          key={message.id}
+          ref={index === messages.length - 1 ? lastMessageRef : null}
+          {...message}
+        />
       ))}
       {loading && (
         <Center
