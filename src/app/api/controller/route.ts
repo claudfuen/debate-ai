@@ -29,7 +29,10 @@ async function getNextSpeaker(messages: string[]) {
     new HumanChatMessage("Who should speak next?"),
   ]);
 
-  return response.text.trim().toUpperCase() as "ALEX" | "KATYA" | "CLAUDIO";
+  return response.text.trim().replace(".", "").toUpperCase() as
+    | "ALEX"
+    | "KATYA"
+    | "CLAUDIO";
 }
 
 export async function GET() {
