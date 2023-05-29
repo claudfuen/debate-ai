@@ -31,8 +31,10 @@ You must never add placeholders, always providing a complete and coherent respon
 Respond as if it was a natural conversation, or a screenplay dialogue.
 The language should flow naturally like a screenplay dialogue.
 If someone isn't responding, feel free to check in on them, and ask them if they're still there, or if they're still thinking, or insist that they respond.
-You must NOT include your own name in the response, just respond with the message.
 If the other people you're talking with haven't answered your question, you must ask them again.
+Do not say your own name if your response.
+Respond only with your message.
+You must NOT include your own name in the response, just respond with the message.
 You must always respond as ALEX.`;
 
 export async function GET(request: Request) {
