@@ -60,6 +60,8 @@ export async function GET() {
     fetch(`https://debate.tube${pathMap[nextSpeaker]}`, { method: "GET" });
   }
 
+  console.log({ nextSpeaker, history: priorMessagesConcat });
+
   return NextResponse.json({
     nextSpeaker,
     history: priorMessagesConcat,
