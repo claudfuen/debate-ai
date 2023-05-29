@@ -19,9 +19,6 @@ async function getNextSpeaker(messages: string[]) {
   Sometimes allow the same person to speak twice in a row.
   Optimize for controversial and engaging conversations, dramatic, and heated.
   Do not say anything else, just the name. One word responses.
-  You must not include any period or punctuation in your response.
-  Do not include a period after your response.
-  Only include uppercase letters in your response.
 
   Only respond with a single word: "ALEX", "KATYA", or "CLAUDIO".`;
   const response = await chat.call([
