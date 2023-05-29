@@ -10,13 +10,9 @@ export const metadata = {
 } as Metadata;
 
 export default async function Home() {
-  const { data: messages, error } = await supabase
-    .from("messages")
-    .select("id, message, created_at, from");
-
   return (
     <main>
-      <HomePage messages={messages} />
+      <HomePage />
     </main>
   );
 }

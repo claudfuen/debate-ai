@@ -1,14 +1,8 @@
 "use client";
 
-import {
-  Box,
-  ButtonGroup,
-  Flex,
-  Heading,
-  Stack,
-  Tag,
-  Text,
-} from "@chakra-ui/react";
+import { Center, Spinner, Stack, VStack } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { Message } from "./Message";
 
 export type Message = {
   id: number;
@@ -17,36 +11,50 @@ export type Message = {
   from: "ALEX" | "KATYA" | "CLAUDIO";
 };
 
-export default function HomePage({ messages }: { messages: Message[] | null }) {
+export default function HomePage() {
+  const [messages, setMessages] = useState<Message[] | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getMessages = async () => {
+      setLoading(true);
+      const res = await fetch("/api/get-messages");
+      const data = await res.json();
+      setMessages(data);
+      setLoading(false);
+    };
+
+    getMessages();
+    const interval = setInterval(() => getMessages(), 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  if (!messages && loading)
+    return (
+      <VStack p={8} gap={4} py={16}>
+        <Spinner color="blue.500" />
+      </VStack>
+    );
+
   return (
     <Stack p={8} gap={4}>
       {messages?.map((message) => (
-        <Flex key={message.id}>
-          <Flex w={24} dir="column">
-            <Stack>
-              <Box>
-                <Tag
-                  colorScheme={
-                    message.from === "CLAUDIO"
-                      ? "red"
-                      : message.from === "KATYA"
-                      ? "blue"
-                      : "gray"
-                  }
-                >
-                  {message.from}
-                </Tag>
-              </Box>
-              <Text fontSize={"xs"}>
-                {new Date(message.created_at).toLocaleTimeString()}
-              </Text>
-            </Stack>
-          </Flex>
-          <Box bg={"blackAlpha.200"} p={2} rounded={"md"} w={"full"}>
-            {message.message}
-          </Box>
-        </Flex>
+        <Message key={message.id} {...message} />
       ))}
+      {loading && (
+        <Center
+          position={"absolute"}
+          bottom={4}
+          right={4}
+          zIndex={10}
+          bg={"whiteAlpha.100"}
+          p={4}
+          rounded={"md"}
+        >
+          <Spinner />
+        </Center>
+      )}
     </Stack>
   );
 }
