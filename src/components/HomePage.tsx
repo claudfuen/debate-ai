@@ -19,7 +19,7 @@ export default function HomePage() {
     };
 
     getMessages();
-    const interval = setInterval(() => getMessages(), 5000);
+    const interval = setInterval(() => getMessages(), 10000);
 
     return () => clearInterval(interval);
   }, []);
