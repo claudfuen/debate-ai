@@ -8,7 +8,7 @@ if (!process.env.OPENAI_API_KEY) {
   throw new Error("Missing env var: OPENAI_API_KEY");
 }
 
-const chat = new ChatOpenAI({ temperature: 0.6, modelName: "gpt-4" });
+const chat = new ChatOpenAI({ temperature: 0.4, modelName: "gpt-3.5" });
 
 // Cannot use edge since it doesn't support XMLHttpRequest
 export const runtime = "nodejs";
